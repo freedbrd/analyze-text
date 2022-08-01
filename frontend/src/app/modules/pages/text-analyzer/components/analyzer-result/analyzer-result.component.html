@@ -1,0 +1,16 @@
+<nz-table #table
+          [nzFrontPagination]="false"
+          [nzData]="textAnalyzeList | handleEmpty">
+  <thead>
+  <tr>
+    <th>Letter</th>
+    <th>Count</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of table.data">
+    <td>{{data?.letter}}</td>
+    <td>{{data?.value}}</td>
+  </tr>
+  </tbody>
+</nz-table>

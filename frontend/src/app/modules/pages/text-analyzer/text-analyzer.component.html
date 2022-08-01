@@ -1,0 +1,28 @@
+<form [formGroup]="form"
+      class="wrapper">
+  <h1>Text Analyze</h1>
+  <textarea nz-input
+            formControlName="text"
+            placeholder="Enter the text here"></textarea>
+  <div class="form-wrapper">
+    <span class="title">Select type of letter</span>
+    <nz-select formControlName="mode">
+      <nz-option *ngFor="let option of analyzeTextModeOptions"
+                 [nzLabel]="option.title"
+                 [nzValue]="option.value"></nz-option>
+    </nz-select>
+  </div>
+  <button nz-button
+          [disabled]="form.invalid"
+          nzType="primary"
+          (click)="onAnalyze()">Analyze text
+  </button>
+</form>
+
+<ng-container *ngIf="textAnalyze$ | async as textAnalyze">
+  <hr>
+
+  <div class="wrapper">
+    <app-analyzer-result [textAnalyzeList]="textAnalyze"></app-analyzer-result>
+  </div>
+</ng-container>
